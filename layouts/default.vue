@@ -4,16 +4,18 @@
 
 <template>
   <main class="layout">
-    <header class="layout__header">
-      Header
-    </header>
+    <div class="layout__header">
+      <Header />
+    </div>
     <aside class="layout__aside">
       <slot name="aside"></slot>
     </aside>
     <article class="layout__article">
       <NuxtPage />
     </article>
-    <Footer />
+    <div class="layout__footer">
+      <Footer />
+    </div>
   </main>
 </template>
 <style lang="scss" scoped>
