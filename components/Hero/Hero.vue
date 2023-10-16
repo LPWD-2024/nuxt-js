@@ -37,7 +37,6 @@ const { data: recipes } = await useAsyncData('recipes', async () => {
         <!-- Or variant props inside <Button /> component to handle all possible cases-->
         <Button :href="button.button_link.url" :variant="button.button_type">{{ button.button_label }}</Button>
       </div>
-      {{ recipes }}
     </div>
   </section>
 </template>
