@@ -1,7 +1,14 @@
 <script setup>
 const { client } = usePrismic()
-const { data: home } = await useAsyncData('home', () => client.getSingle('homepage'))
-console.log(home);
+const { data: home, error } = await useAsyncData('home', () => client.getSingle('homepage'))
+
+// Handle case when request fails
+if (!home.value || error.value) {
+  throw createError({ statusCode: 404, statusMessage: 'La page d\'accueil est introuvable' })
+}
+
+
+
 </script>
 
 <template>
