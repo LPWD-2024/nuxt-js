@@ -17,7 +17,15 @@ const props = defineProps({
       <PrismicRichText :field="text" />
     </div>
     <div class="c-hero__buttons">
-      <div v-for="(button, index) in buttons" class="c-hero__button">
+      <div v-for="button in buttons">
+        <!-- v-if within the loop -->
+        <!--        <button v-if="button.button_type === 'default'" class="c-hero__button -default">-->
+        <!--          <a :href="button.button_link.url">{{ button.button_label }}</a>-->
+        <!--        </button>-->
+        <!--        <button v-else class="c-hero__button -video">-->
+        <!--          <a :href="button.button_link.url">{{ button.button_label }}</a>-->
+        <!--        </button>-->
+        <!-- Or variant props inside <Button /> component to handle all possible cases-->
         <Button :href="button.button_link.url" :variant="button.button_type">{{ button.button_label }}</Button>
       </div>
     </div>
@@ -52,6 +60,12 @@ const props = defineProps({
     align-items: center;
     &:not(:first-child) {
       margin-top: 2rem;
+    }
+  }
+
+  &__button {
+    &.-default {
+      background-color: orange;
     }
   }
 }
