@@ -1,9 +1,18 @@
 <script setup="">
+const env = useRuntimeConfig()
 const props = defineProps({
   title: Array,
   text: Array,
   buttons: Array
 })
+
+const { data: recipes } = await useAsyncData('recipes', async () => {
+  return $fetch(env.public.apiUrl + '/recipes')
+})
+
+// onMounted(async () => {
+//   await getRecipes()
+// })
 </script>
 
 <template>
@@ -28,6 +37,7 @@ const props = defineProps({
         <!-- Or variant props inside <Button /> component to handle all possible cases-->
         <Button :href="button.button_link.url" :variant="button.button_type">{{ button.button_label }}</Button>
       </div>
+      {{ recipes }}
     </div>
   </section>
 </template>
