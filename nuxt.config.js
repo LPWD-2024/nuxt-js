@@ -21,7 +21,8 @@ export default defineNuxtConfig({
     }
   ],
   modules: [
-      '@nuxtjs/prismic'
+    '@nuxtjs/prismic',
+    '@pinia/nuxt' // <--
   ],
   prismic: { endpoint: process.env.NUXT_PRISMIC_ENDPOINT },
   css: [
