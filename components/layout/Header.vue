@@ -7,7 +7,7 @@ const store = useGlobalStore()
 <template>
   <header class="c-header">
     <div class="c-header__text">
-      Le header
+      <NuxtLink to="/">Le header</NuxtLink>
     </div>
     <div class="c-header__count" @click="store.increment()">
       {{ store.cart }}
