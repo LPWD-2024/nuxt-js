@@ -1,12 +1,6 @@
-<script setup>
-
-</script>
-
 <template>
   <main class="layout">
-    <div class="layout__header">
-      <Header />
-    </div>
+    <Header />
     <aside class="layout__aside">
       <slot name="aside"></slot>
     </aside>
@@ -26,6 +20,7 @@
     'article'
     'aside'
     'footer';
+  padding-top: 80px;
 
   @include medium-up {
     grid-template:

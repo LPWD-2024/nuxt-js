@@ -1,12 +1,23 @@
 <script setup>
-defineProps({
+const props = defineProps({
   id: Number,
   title: String,
   description: String,
   image: String
 })
-</script>
 
+const store = useGlobalStore()
+
+const buttonLabel = computed(() => store.isInCart(props.id) ? 'Remove from cart' : 'Add to cart')
+
+const onClick = () => {
+  if (store.isInCart(props.id)) {
+    store.removeFromCart(props.id)
+  } else {
+    store.addToCart(props.id)
+  }
+}
+</script>
 <template>
   <div class="c-recipe-card">
     <div class="c-recipe-card__image"></div>
@@ -14,7 +25,10 @@ defineProps({
       <p class="c-recipe-card__title">{{ title }}</p>
       <p class="c-recipe-card__description">{{ description }}</p>
       <RouterLink :to="`/recipes/${id}`">Plus d'infos</RouterLink>
-      <div class="c-recipe-card__button">Add to cart</div>
+      <!-- Système flexible pour n'avoir qu'un bouton au lieu de 2 -->
+      <div class="c-recipe-card__button" @click="onClick">
+        {{ buttonLabel }}
+      </div>
     </div>
   </div>
 </template>
